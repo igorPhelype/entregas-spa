@@ -7,7 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Button, Icon } from '@material-ui/core';
+import { Button, Icon, IconButton } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
 import api from '../Utils/api'
@@ -42,6 +42,7 @@ function EntregasList(props) {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
+                            <TableCell>Ações</TableCell>
                             <TableCell>ID da entrega</TableCell>
                             <TableCell>Nome do cliente</TableCell>
                             <TableCell align="right">Data de entrega</TableCell>
@@ -50,6 +51,11 @@ function EntregasList(props) {
                     <TableBody>
                         {entregasList.map((row) => (
                             <TableRow key={row.id}>
+                                <TableCell component="th" scope="row">
+                                    <IconButton onClick={() => history.push('/entrega/' + row.id)} aria-label="create">
+                                        <Icon>pageview</Icon>
+                                    </IconButton>
+                                </TableCell>
                                 <TableCell component="th" scope="row">{row.id}</TableCell>
                                 <TableCell component="th" scope="row">{row.name}</TableCell>
                                 <TableCell align="right">{row.deliveryDate}</TableCell>

@@ -29,7 +29,7 @@ function EntregasForm(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
         api.post('/entrega', entrega).then((response) => {
-            const {data: payload} = response
+            const { data: payload } = response
             history.push(`/entrega/${payload.id}`)
         }).catch(e => {
             console.log(e)
